@@ -1,0 +1,43 @@
+{
+  "name": "observux",
+  "version": "0.1.0",
+  "description": "Reactive state management for JavaScript apps",
+  "scripts": {
+    "build": "uglifyjs observux.js -c -m --source-map url=observux.min.js.map -o observux.min.js",
+    "test": "mocha"
+  },
+  "main": "observux.js",
+  "typings": "observux.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malj/observux.git"
+  },
+  "author": {
+    "name": "Luka Maljic",
+    "email": "luka.maljic@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malj/observux/issues"
+  },
+  "homepage": "https://github.com/malj/observux#readme",
+  "dependencies": {
+    "rxjs": "^5.4.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0",
+    "uglify-js": "^3.0.28"
+  },
+  "keywords": [
+    "store",
+    "storage",
+    "reactive",
+    "state",
+    "observer",
+    "observable",
+    "subject",
+    "rxjs",
+    "rx"
+  ]
+}
