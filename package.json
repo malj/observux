@@ -1,7 +1,7 @@
 {
   "name": "observux",
   "version": "0.1.0",
-  "description": "Reactive state management for JavaScript apps",
+  "description": "Reactive state management for JavaScript apps with a minimal API and full power of RxJS",
   "scripts": {
     "build": "uglifyjs observux.js -c -m --source-map url=observux.min.js.map -o observux.min.js",
     "test": "mocha"
