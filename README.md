@@ -9,12 +9,12 @@ Reactive state management for JavaScript apps with a minimal API and full power 
 ## Installation
 
 ```bash
-npm install rxjs observux
+npm install observux
 ```
 
 ## Usage
 
-Observux stores are state containers with observable properties. Assigning values to the properties emits an updated state to its subscribers:
+Observux manages states using reactive state containers called stores: JavaScript objects with observable properties. Assigning values to the properties emits an updated state to its subscribers:
 
 ```javascript
 import {Store} from 'observux'

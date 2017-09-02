@@ -1,14 +1,14 @@
 ;(function (global, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['rxjs'], factory)
-    }
-    else if (typeof module === 'object' && module.exports) {
+    if (typeof module === 'object' && module.exports) {
         var Rx = {
             Observable: require('rxjs/Observable').Observable,
             BehaviorSubject: require('rxjs/BehaviorSubject').BehaviorSubject
         }
         require('rxjs/add/observable/combineLatest')
         module.exports = factory(Rx)
+    }
+    else if (typeof define === 'function' && define.amd) {
+        define(['rxjs'], factory)
     }
     else {
         global.Observux = factory(global.Rx)
@@ -50,18 +50,16 @@
             return subject
         })
 
-        var args = subjects.concat(function () {
-            return Object.keys(store).reduce(function (state, key) {
-                state[key] = store[key]
-                return state
-            }, {})
-        })
-
         Object.defineProperty(store, 'state', {
             configurable: false,
             enumerable: false,
             writable: false,
-            value: Rx.Observable.combineLatest.apply(null, args)
+            value: Rx.Observable.combineLatest(subjects, function () {
+                return Object.keys(store).reduce(function (state, key) {
+                    state[key] = store[key]
+                    return state
+                }, {})
+            })
         })
     }
 
