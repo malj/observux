@@ -36,12 +36,12 @@ Stores can be extended, and their observable `state` values can be adjusted usin
 ```javascript
 import {Store} from 'observux'
 import {Observable} from 'rxjs/Observable'
-import 'rxjs/add/operators/map'
-import 'rxjs/add/operators/filter'
-import 'rxjs/add/operators/pluck'
-import 'rxjs/add/operators/skip'
-import 'rxjs/add/operators/take'
-import 'rxjs/add/operators/distinctUntilKeyChanged'
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/filter'
+import 'rxjs/add/operator/pluck'
+import 'rxjs/add/operator/skip'
+import 'rxjs/add/operator/take'
+import 'rxjs/add/operator/distinctUntilKeyChanged'
 
 class GithubUserService extends Store {
     constructor() {
@@ -95,7 +95,7 @@ githubUserService.fetchUsers('octocat', 'torvalds')  // logs 'The Octocat', 'Lin
 
 Base class for Observux stores.
 
-A `Store` instance's observable properties are defined in `props` object. It also has a special `state` property, an [observable](http://reactivex.io/rxjs/manual/overview.html#observable) sequence of its state values. Assigning values to its observable properties emits a new state value to subscribers.
+A `Store` instance's observable properties are defined in the `props` object. It also has a special `state` property, an [observable](http://reactivex.io/rxjs/manual/overview.html#observable) sequence of its state values. Assigning values to its observable properties emits a new state value to subscribers.
 
 *Under the hood, `props` are converted to getters/setters to allow tracking of state changes. Due to ES5 limitations (and poor ES6 Proxy support), it is currently not possible to detect new observable properties once a store has been created.*
 

@@ -9,7 +9,7 @@ describe('Store constructor', () => {
         expect(Store).to.be.a('function')
     })
 
-    it('should throw a TypeError if passed a non-object source', () => {
+    it('should throw a TypeError if passed non-object props', () => {
         const invalidTypes = [
             'string',
             1337,
@@ -24,20 +24,20 @@ describe('Store constructor', () => {
         })
     })
 
-    it('should throw a RangeError if passed a source object without ' +
+    it('should throw a RangeError if passed a props object without ' +
         'own enumerable properties', () =>
     {
-        const emptySource = {}
+        const emptyProps = {}
 
-        expect(() => new Store(emptySource)).to.throw(RangeError)
+        expect(() => new Store(emptyProps)).to.throw(RangeError)
     })
 
-    it('should throw a TypeError if passed a source object containing the ' +
+    it('should throw a TypeError if passed a props object containing the ' +
         'reserved property name "state"', () =>
     {
-        const invalidSource = {state: true}
+        const invalidProps = {state: true}
 
-        expect(() => new Store(invalidSource)).to.throw(TypeError)
+        expect(() => new Store(invalidProps)).to.throw(TypeError)
     })
 
     it('should return a Store instance', () => {
@@ -46,14 +46,14 @@ describe('Store constructor', () => {
 })
 
 describe('Store instance', () => {
-    const source = {foo: 'bar', baz: 'qux'}
-    const store = new Store(source)
+    const props = {foo: 'bar', baz: 'qux'}
+    const store = new Store(props)
 
-    it('should have all source properties copied onto itself', () => {
-        expect(store).to.deep.equal(source)
+    it('should have all props copied onto itself', () => {
+        expect(store).to.deep.equal(props)
     })
 
-    it('should have all properties converted to nonconfigurable, enumerable ' +
+    it('should have all props converted to nonconfigurable, enumerable ' +
        'getters and setters', () =>
     {
         Object.keys(store).forEach(key => {
@@ -98,7 +98,7 @@ describe('State property', () => {
         })
     })
 
-    it('should emit a value on any other observed property ' +
+    it('should emit a value on any other observable property ' +
         'assignment', done =>
     {
         store.state.skip(1).take(1).subscribe(state => {
